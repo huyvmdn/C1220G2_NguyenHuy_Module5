@@ -1,0 +1,71 @@
+{
+  "customerTypes": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ],
+  "customer": [
+    {
+      "id": 1,
+      "code": "KH-1234",
+      "name": "Huy",
+      "birthday": "12/12/1991",
+      "gender": "male",
+      "idCard": "0123456789",
+      "phone": "0905830060",
+      "email": "huyvm@gmail.com",
+      "address": "345 le lai",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      }
+    },
+    {
+      "id": 2,
+      "code": "KH-3334",
+      "name": "Cong",
+      "birthday": "12/12/1991",
+      "gender": "male",
+      "idCard": "0123456789",
+      "phone": "0905830060",
+      "email": "huyvm@gmail.com",
+      "address": "345 le lai",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      }
+    },
+    {
+      "code": "KH-2002",
+      "name": "bzgfsd",
+      "gender": "female",
+      "idCard": 123456789,
+      "phone": "0906777888",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "birthday": "1991-12-12",
+      "email": "huyvm.dn@gmail.com",
+      "address": "hgjhg igjhtgiu",
+      "id": 3
+    }
+  ]
+}

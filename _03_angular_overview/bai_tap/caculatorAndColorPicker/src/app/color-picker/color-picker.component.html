@@ -1,0 +1,5 @@
+<p>color-picker works!</p>
+<input type="text"  [(ngModel)]="color">
+<input type="number" [(ngModel)]="size">
+<input type="color" size="100" [(ngModel)]="color">
+<div [ngStyle]="{backgroundColor: color, height: size + 'px', width: size+'px'}" ></div>

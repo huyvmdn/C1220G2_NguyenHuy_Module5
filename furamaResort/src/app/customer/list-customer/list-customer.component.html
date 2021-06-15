@@ -1,0 +1,35 @@
+<h3>CUSTOMER</h3>
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th> Id</th>
+    <th> Code</th>
+    <th> Name</th>
+    <th> gender</th>
+    <th> idCard</th>
+    <th> phone</th>
+    <th> email</th>
+    <th> address</th>
+    <th> customerType</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let c of customerList; index as i">
+    <td>{{i+1}}</td>
+    <td>{{c.code}}</td>
+    <td>{{c.name}}</td>
+    <div *ngIf="c.gender; then male; else female"></div>
+    <ng-template #male><td>Male </td></ng-template>
+    <ng-template #female><td>Female </td></ng-template>
+
+    <td>{{c.idCard}}</td>
+    <td>{{c.phone}}</td>
+    <td>{{c.email}}</td>
+    <td>{{c.address}}</td>
+    <td>{{c.customerType.name}}</td>
+    <td><a [routerLink]="['/customer/edit', customerList[i]]"> </a></td>
+  </tr>
+  </tbody>
+</table>

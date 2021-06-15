@@ -1,0 +1,48 @@
+Caculator
+
+<div style="border: 1px">
+  number 1:
+  <input type="number" class="form-control" [(ngModel)]="number1" >
+  number 2:
+  <input type="number" class="form-control" [(ngModel)]="number2" >
+  <input type="button" class="btn btn-outline-primary"  name="times" value="+" (click)="sum()"  >
+  <input type="button" class="btn btn-outline-primary"  name="times" value="-" (click)="minus()">
+  <input type="button" class="btn btn-outline-primary"  name="times" value="x" (click)="multiply()">
+  <input type="button" class="btn btn-outline-primary"  name="times" value="/" (click)="division()">
+  <input type="text" disabled class="form-control" [(ngModel)]="result">
+</div>
+
+
+<form name="calcu">
+  <table>
+    <tr>
+      <td colspan="4">
+        <input type="text" class="form-control"  name="display" disabled>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="button" class="btn btn-outline-primary" name="one" value="1" onclick="calcu.display.value += 1"></td>
+      <td><input type="button" class="btn btn-outline-primary" name="two" value="2" onclick="calcu.display.value += 2"></td>
+      <td><input type="button" class="btn btn-outline-primary" name="three" value="3" onclick="calcu.display.value += 3"></td>
+      <td><input type="button" class="btn btn-outline-primary"  name="plus" value="+" onclick="calcu.display.value += '+'"></td>
+    </tr>
+    <tr>
+      <td><input type="button" class="btn btn-outline-primary" name="four" value="4" onclick="calcu.display.value += 4"></td>
+      <td><input type="button" class="btn btn-outline-primary" name="five" value="5" onclick="calcu.display.value += 5"></td>
+      <td><input type="button" class="btn btn-outline-primary" name="six" value="6" onclick="calcu.display.value += 6"></td>
+      <td><input type="button" class="btn btn-outline-primary"  name="minus" value="-" onclick="calcu.display.value += '-'"></td>
+    </tr>
+    <tr>
+      <td><input type="button" class="btn btn-outline-primary" name="seven" value="7" onclick="calcu.display.value += 7"></td>
+      <td><input type="button" class="btn btn-outline-primary" name="eight" value="8" onclick="calcu.display.value += 8"></td>
+      <td><input type="button" class="btn btn-outline-primary" name="nine" value="9" onclick="calcu.display.value += 9"></td>
+      <td><input type="button" class="btn btn-outline-primary"  name="times" value="x" onclick="calcu.display.value += '*'"></td>
+    </tr>
+    <tr>
+      <td><input type="button" class="btn btn-outline-primary"  id="clear" name="clear" value="C" onclick="calcu.display.value = ''"></td>
+      <td><input type="button" class="btn btn-outline-primary"  name="zero" value="0" onclick="calcu.display.value += '0'"></td>
+      <td><input type="button" class="btn btn-outline-primary"  name="doit" value="=" onclick="calcu.display.value = eval(calcu.display.value)"></td>
+      <td><input type="button" class="btn btn-outline-primary" name="div" value="/" onclick="calcu.display.value += '/'"></td>
+    </tr>
+  </table>
+</form>

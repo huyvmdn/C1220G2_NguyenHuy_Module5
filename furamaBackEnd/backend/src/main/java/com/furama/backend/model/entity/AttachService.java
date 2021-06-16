@@ -1,7 +1,7 @@
 package com.furama.backend.model.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,7 +34,7 @@ public class AttachService {
     private boolean status;
 
     @OneToMany(mappedBy = "attachService", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private List<ContractDetail> contractDetails;
 
     public AttachService(String name, @Min(value = 0) double cost, @Min(value = 0) int unit, boolean status, List<ContractDetail> contractDetails) {

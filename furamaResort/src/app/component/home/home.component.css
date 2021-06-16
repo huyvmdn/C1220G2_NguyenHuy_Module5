@@ -1,0 +1,19 @@
+.boxzilla-close-icon {
+  color: black !important;
+}
+
+ .boxzilla-close-icon {
+   position: absolute;
+   right: 0;
+   top: 0;
+   text-align: center;
+   padding: 6px;
+   cursor: pointer;
+   -webkit-appearance: none;
+   font-size: 28px;
+   font-weight: 700;
+   line-height: 20px;
+   color: #000;
+   opacity: .5;
+ }
+

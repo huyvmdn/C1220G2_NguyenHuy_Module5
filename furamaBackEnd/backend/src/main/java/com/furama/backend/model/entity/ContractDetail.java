@@ -1,6 +1,5 @@
 package com.furama.backend.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +8,7 @@ import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 @Table
@@ -29,12 +29,10 @@ public class ContractDetail {
 
     @ManyToOne
     @JoinColumn(name="contract_id", nullable=false)
-    @JsonBackReference
     private Contract contract;
 
     @ManyToOne
     @JoinColumn(name="attachService_id", nullable=false)
-    @JsonBackReference
     private AttachService attachService;
 
 }

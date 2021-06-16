@@ -1,6 +1,6 @@
 package com.furama.backend.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +24,7 @@ public class ServiceType {
     private String name;
 
     @OneToMany(mappedBy = "serviceType", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private List<EntityService> entityServices;
 
     public ServiceType(String name) {

@@ -1,7 +1,6 @@
 package com.furama.backend.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,16 +51,14 @@ public class EntityService {
 
     @ManyToOne
     @JoinColumn(name="serviceType_id", nullable=false)
-    @JsonBackReference
     private ServiceType serviceType;
 
     @OneToMany(mappedBy = "entityService", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Contract> contracts;
 
     @ManyToOne
     @JoinColumn(name="rentType_id", nullable=false)
-    @JsonBackReference
     private RentType rentType;
 
     public EntityService(@NotBlank @Pattern(regexp = "^DV-[0-9]{4}$", message = "DV-XXXX (X là số từ 0-9)") String code, String name, @Min(value = 0) int area, @Min(value = 0) double cost, @Min(value = 0) int maxPeople, String standardRoom, String descriptionOtherConvenience, @Min(value = 0) double poolArea, @Min(value = 0) int numberOfFloors, ServiceType serviceType, RentType rentType) {

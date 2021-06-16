@@ -2,7 +2,7 @@ package com.furama.backend.model.entity;
 
 
 //import com.furama.backend.model.User;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.furama.backend.ultil.EmployeeEmail;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +15,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -53,17 +54,14 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name="position_id", nullable=false)
-    @JsonBackReference
     private Position position;
 
     @ManyToOne
     @JoinColumn(name="educationDegree_id", nullable=false)
-    @JsonBackReference
     private EducationDegree educationDegree;
 
     @ManyToOne
     @JoinColumn(name="division_id", nullable=false)
-    @JsonBackReference
     private Division division;
 
 //    @OneToOne(cascade = CascadeType.ALL )
@@ -71,6 +69,7 @@ public class Employee {
 //    private User user;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Contract> contracts;
 
     public Employee(@NotBlank String name, @NotBlank String birthday, @NotBlank @Pattern(regexp = "^([0-9]{9}|[0-9]{12})$", message = "KH-XXXX (X là số từ 0-9)") String idCard, @Min(value = 0) double salary, @NotBlank @Pattern(regexp = "^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$", message = "Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx") String phone, @Email String email, String address, Position position, EducationDegree educationDegree, Division division) {

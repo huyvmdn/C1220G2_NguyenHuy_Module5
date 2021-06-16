@@ -18,6 +18,9 @@ import {CreateContractDetailComponent} from './contractDetail/create-contract-de
 import {UsingCustomerComponent} from './customer/using-customer/using-customer.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
+import { HomeComponent } from './component/home/home.component';
+import {UpdateCustomerComponent} from "./customer/update-customer/update-customer.component";
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import {HttpClientModule} from "@angular/common/http";
     ListContractComponent,
     CreateContractComponent,
     CreateContractDetailComponent,
-    UsingCustomerComponent
+    UsingCustomerComponent,
+    HomeComponent,
+    UpdateCustomerComponent
   ],
   imports: [
     BrowserModule,

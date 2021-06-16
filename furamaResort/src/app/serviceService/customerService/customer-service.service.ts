@@ -11,7 +11,7 @@ const API_URL = `${environment.apiUrl}`;
   providedIn: 'root'
 })
 export class CustomerServiceService {
-  private _API_URL_CUSTOMERTYPE = 'http://localhost:8080/customerTypes';
+  private _API_URL_CUSTOMERTYPE = 'http://localhost:8080/customerType';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

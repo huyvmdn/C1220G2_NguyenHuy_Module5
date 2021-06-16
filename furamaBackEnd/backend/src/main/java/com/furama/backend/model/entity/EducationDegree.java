@@ -1,6 +1,6 @@
 package com.furama.backend.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +24,7 @@ public class EducationDegree {
     private String name;
 
     @OneToMany(mappedBy = "educationDegree", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Employee> employees;
 
     public EducationDegree(String name) {

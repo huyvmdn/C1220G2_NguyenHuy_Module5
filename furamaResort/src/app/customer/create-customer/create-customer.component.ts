@@ -45,6 +45,7 @@ export class CreateCustomerComponent implements OnInit {
 
   save_update() {
     let customer = this.createForm.value;
+    console.log(customer)
     this.cs.postCustomer(customer).subscribe(() => {
       this.createForm.reset();
       alert('successfully');

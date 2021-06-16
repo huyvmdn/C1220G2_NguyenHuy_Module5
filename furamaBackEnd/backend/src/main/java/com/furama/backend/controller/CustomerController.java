@@ -23,7 +23,7 @@ public class CustomerController {
     private CustomerTypeService customerTypeService;
 
     @ModelAttribute("customerTypes")
-    public Iterable<CustomerType> customerTypes() {
+    public Iterable<CustomerType> customerTypesBackEnd() {
         return customerTypeService.findAll();
     }
 
@@ -35,6 +35,15 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(customers,HttpStatus.OK);
+    }
+
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<Customer> findById(@PathVariable Long id) {
+        Customer customer= customerService.findById(id).get();
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     @PostMapping("/customer/save")
@@ -60,5 +69,14 @@ public class CustomerController {
         }
         customerService.deleteById(id);
         return new ResponseEntity<>(customerOptional.get(), HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/customerType")
+    public ResponseEntity<Iterable<CustomerType>> customerTypes() {
+        List<CustomerType> customerTypes = (List<CustomerType>) customerTypeService.findAll();
+        if (customerTypes.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(customerTypes,HttpStatus.OK);
     }
 }

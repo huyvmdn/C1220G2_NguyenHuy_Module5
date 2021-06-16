@@ -1,6 +1,6 @@
 package com.furama.backend.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +29,7 @@ public class RentType {
     private double cost;
 
     @OneToMany(mappedBy = "rentType", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private List<EntityService> entityServices;
 
     public RentType(String name) {

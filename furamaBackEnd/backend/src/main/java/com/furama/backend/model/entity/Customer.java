@@ -2,6 +2,7 @@ package com.furama.backend.model.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.furama.backend.ultil.CustomerEmail;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -52,11 +54,10 @@ public class Customer {
 
     @ManyToOne
     @JoinColumn(name = "customerType_id", nullable = false)
-    @JsonManagedReference
     private CustomerType customerType;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Contract> contracts;
 
     public Customer(@NotBlank @Pattern(regexp = "^KH-[0-9]{4}$", message = "KH-XXXX (X là số từ 0-9)") String code, @NotBlank String name, @NotBlank String birthday, @NotNull boolean gender, @NotBlank @Pattern(regexp = "^([0-9]{9}|[0-9]{12})$", message = "KH-XXXX (X là số từ 0-9)") String idCard, @NotBlank @Pattern(regexp = "^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$", message = "Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx") String phone, @Email @NotEmpty String email, String address, CustomerType customerType) {

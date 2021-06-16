@@ -1,17 +1,20 @@
 package com.furama.backend.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -42,22 +45,20 @@ public class Contract {
 
     @ManyToOne
     @JoinColumn(name="employee_id", nullable=false)
-    @JsonBackReference
     private Employee employee;
 
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
-    @JsonBackReference
+    @JsonManagedReference
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name="entityService_id", nullable=false)
-    @JsonBackReference
     private EntityService entityService;
 
 
     @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private List<ContractDetail> contractDetails;
 
     public Contract(@NotBlank String startDate, String endDate, @Min(value = 0) Double deposit, @Min(value = 0) Double totalMoney, Employee employee, Customer customer, List<ContractDetail> contractDetails) {

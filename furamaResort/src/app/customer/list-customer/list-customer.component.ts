@@ -10,7 +10,9 @@ import {Observable} from "rxjs";
 })
 export class ListCustomerComponent implements OnInit {
   customerList: Customer[] = [];
-
+  deleteId : number=0;
+  deleteCode:string='';
+  customer!: Customer;
   constructor(private cs: CustomerServiceService) {
 
   }
@@ -23,4 +25,18 @@ export class ListCustomerComponent implements OnInit {
     })
   }
 
+  send(id: number) {
+    this.deleteId = id;
+    this.cs.findById(id).subscribe(data =>{
+      this.customer = data;
+      this.deleteCode = this.customer.code;
+    });
+  }
+  deleteCustomer(){
+    let c = this.cs.deleteById(this.deleteId).subscribe(() => {
+      this.cs.getCustomers();
+    },e =>{
+      console.log(e)
+    });
+  }
 }

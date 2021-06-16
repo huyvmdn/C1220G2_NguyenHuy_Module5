@@ -17,19 +17,51 @@
   </thead>
   <tbody>
   <tr *ngFor="let c of customerList; index as i">
-    <td>{{i+1}}</td>
+    <td>{{i + 1}}</td>
     <td>{{c.code}}</td>
     <td>{{c.name}}</td>
     <div *ngIf="c.gender; then male; else female"></div>
-    <ng-template #male><td>Male </td></ng-template>
-    <ng-template #female><td>Female </td></ng-template>
+    <ng-template #male>
+      <td>Male</td>
+    </ng-template>
+    <ng-template #female>
+      <td>Female</td>
+    </ng-template>
 
     <td>{{c.idCard}}</td>
     <td>{{c.phone}}</td>
     <td>{{c.email}}</td>
     <td>{{c.address}}</td>
     <td>{{c.customerType.name}}</td>
-    <td><a [routerLink]="['/customer/edit', customerList[i]]"> </a></td>
+    <td>
+      <button [routerLink]="['/update-customer', c.id]" class="btn btn-warning">edit</button>
+    </td>
+<!--    <td>-->
+<!--      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" (click)="send(c.id)">-->
+<!--        delete-->
+<!--      </button>-->
+<!--    </td>-->
   </tr>
   </tbody>
 </table>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete customer has code <span style="color: red">{{deleteCode}}</span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteCustomer()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

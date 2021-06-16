@@ -1,22 +1,22 @@
 <section class="get-in-touch">
   <h1 class="title">Create Customer</h1>
-  <form class="contact-form row" [formGroup]="createForm" (ngSubmit)="save_update()">
+  <form class="contact-form row"*ngIf="form" [formGroup]="form"  (ngSubmit)="save_update()">
     <div class="form-field col-lg-6">
-      <input id="code" class="input-text js-input" formControlName="code" type="text"  required>
+      <input id="code" class="input-text js-input" formControlName="code"  type="text" required>
       <label class="label" for="code">code</label>
       <p class="col alert alert-danger" role="alert"
-         *ngIf="createForm.controls.code.hasError('required') && createForm.controls.code.touched">
+         *ngIf="form.controls.code.hasError('required') && form.controls.code.touched">
         Can not be empty...!!!
       </p>
-      <p class="col alert alert-danger" *ngIf="!createForm.controls.code.valid && createForm.controls.code.touched ">
+      <p class="col alert alert-danger" *ngIf="!form.controls.code.valid && form.controls.code.touched ">
         Invalid format....(Ex: KH-1234)</p>
     </div>
 
     <div class="form-field col-lg-6 ">
-      <input id="Name" class="input-text js-input" formControlName="name" type="text" required>
-      <label class="label" for="Name">Name</label>
+      <input id="Name" class="input-text js-input" formControlName="name" type="text"  required>
+      <label class="label" for="Name"  >Name</label>
       <p class="col alert alert-danger" role="alert"
-         *ngIf="createForm.controls.name.hasError('required') && createForm.controls.name.touched">
+         *ngIf="form.controls.name.hasError('required') && form.controls.name.touched">
         Can not be empty!
       </p>
 
@@ -30,36 +30,39 @@
                                                                        type="radio" id="male">
       <label class="label">gender</label>
       <p class="col alert alert-danger"
-         *ngIf="!createForm.controls.gender.valid && createForm.controls.gender.touched ">
+         *ngIf="!form.controls.gender.valid && form.controls.gender.touched ">
         Can not be empty!</p>
     </div>
     <div class="form-field col-lg-6 ">
       <input id="idCard" class="input-text js-input" type="number" formControlName="idCard" required>
       <label class="label" for="idCard"> idCard</label>
       <p class="col alert alert-danger" role="alert"
-         *ngIf="createForm.controls.idCard.hasError('required') && createForm.controls.idCard.touched">
+         *ngIf="form.controls.idCard.hasError('required') && form.controls.idCard.touched">
         Can not be empty!
       </p>
       <p class="col alert alert-danger"
-         *ngIf="!createForm.controls.idCard.valid && createForm.controls.idCard.touched ">
+         *ngIf="!form.controls.idCard.valid && form.controls.idCard.touched ">
         id Card : 9 number or 12 number</p>
     </div>
     <div class="form-field col-lg-6 ">
       <input id="phone" class="input-text js-input" type="text" formControlName="phone" required>
       <label class="label" for="phone"> phone</label>
       <p class="col alert alert-danger" role="alert"
-         *ngIf="createForm.controls.phone.hasError('required') && createForm.controls.phone.touched">
+         *ngIf="form.controls.phone.hasError('required') && form.controls.phone.touched">
         Can not be empty!
       </p>
-      <p class="col alert alert-danger" *ngIf="!createForm.controls.phone.valid && createForm.controls.phone.touched ">
+      <p class="col alert alert-danger" *ngIf="!form.controls.phone.valid && form.controls.phone.touched ">
         phone number : 10 number || 12, start: 090/091/(84)+</p>
     </div>
 
     <div class="form-field col-lg-6">
       <label class="label" for="customerType" style="margin-bottom: 17px;"> customerType</label>
       <select id="customerType" class="input-text js-input" formControlName="customerType" style="padding-left: 185px;">
-        <option value="" selected disabled >Select a Type</option>
-        <option *ngFor="let c of listType" [ngValue]="c">{{c.name}}</option>
+        <ng-container *ngFor="let c of listType">
+          <option [selected]="c.id" [ngValue]="c"
+                  [value]="c.name">{{c.name}}</option>
+        </ng-container>
+
       </select>
     </div>
 
@@ -67,38 +70,41 @@
       <input id="email" class="input-text js-input" type="email" formControlName="email" required>
       <label class="label" for="email">email</label>
       <p class="col alert alert-danger" role="alert"
-         *ngIf="createForm.controls.email.hasError('required') && createForm.controls.email.touched">
+         *ngIf="form.controls.email.hasError('required') && form.controls.email.touched">
         Can not be empty!
       </p>
-      <p class="col alert alert-danger" *ngIf="!createForm.controls.email.valid && createForm.controls.email.touched ">
+      <p class="col alert alert-danger" *ngIf="!form.controls.email.valid && form.controls.email.touched ">
         email Invalid format</p>
     </div>
     <div class="form-field col-lg-6">
       <input id="birthday" class="input-text js-input" type="date" formControlName="birthday" required>
       <label class="label" for="birthday">birthday</label>
       <p class="col alert alert-danger" role="alert"
-         *ngIf="createForm.controls.birthday.hasError('required') && createForm.controls.birthday.touched">
+         *ngIf="form.controls.birthday.hasError('required') && form.controls.birthday.touched">
         Can not be empty!
       </p>
       <p class="col alert alert-danger"
-         *ngIf="!createForm.controls.birthday.valid && createForm.controls.birthday.touched ">
+         *ngIf="!form.controls.birthday.valid && form.controls.birthday.touched ">
         day: dd/mm/yyyy</p>
     </div>
     <div class="form-field col-lg-12">
       <input id="address" class="input-text js-input" type="text" formControlName="address" required>
       <label class="label" for="address">address</label>
       <p class="col alert alert-danger" role="alert"
-         *ngIf="createForm.controls.address.hasError('required') && createForm.controls.address.touched">
+         *ngIf="form.controls.address.hasError('required') && form.controls.address.touched">
         Can not be empty!
       </p>
       <p class="col alert alert-danger"
-         *ngIf="!createForm.controls.address.valid && createForm.controls.address.touched ">
+         *ngIf="!form.controls.address.valid && form.controls.address.touched ">
         address length 5 character</p>
     </div>
 
     <div class="form-field col-lg-12">
-      <input type="submit" class="submit-btn" *ngIf="createForm.valid" [disabled]="!createForm.valid" value="Submit">
+      <input type="submit" class="submit-btn" *ngIf="form.valid" [disabled]="!form.valid" value="Submit">
 
     </div>
   </form>
+</section>
+<section class="get-in-touch">
+
 </section>

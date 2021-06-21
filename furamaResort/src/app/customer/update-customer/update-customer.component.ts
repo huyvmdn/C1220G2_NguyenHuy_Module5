@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CustomerType} from "../../model/customer-type";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CustomerServiceService} from "../../serviceService/customerService/customer-service.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Customer} from "../../model/customer";
 
 @Component({
@@ -15,31 +15,34 @@ export class UpdateCustomerComponent implements OnInit {
   listType: CustomerType[] = [];
   public form!: FormGroup;
   private updateId!: number;
-  private customer!: Customer;
+  customer!: Customer;
+  radioSelected: number | undefined;
 
-  constructor(private fb: FormBuilder, private cs: CustomerServiceService, private activatedRoute: ActivatedRoute,) {
+  constructor(private fb: FormBuilder, private cs: CustomerServiceService, private activatedRoute: ActivatedRoute, private route: Router) {
   }
 
   ngOnInit(): void {
-    this.cs.getTypeCustomers().subscribe(data => {
 
-      this.listType = data;
-      console.log(this.listType)
-    }, error => {
-      console.log("get " + error + " at getListType on AddCustomerComponent");
-    });
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.updateId = parseInt(<string>paramMap.get('id'));
       console.log(this.updateId)});
+
+
       // @ts-ignore
    this.cs.findById(this.updateId)._subscribe(data=>{
      // console.log(data)
      this.customer=data['body'];
      console.log(this.customer);
+     this.radioSelected = this.customer.gender;
      this.initForm();
-
    });
 
+    this.cs.getTypeCustomers().subscribe(data => {
+      this.listType = data;
+      console.log(this.listType)
+    }, error => {
+      console.log("get " + error + " at getListType  ");
+    });
   }
 
   private initForm() {
@@ -61,8 +64,10 @@ export class UpdateCustomerComponent implements OnInit {
     let customer = this.form.value;
     console.log(customer)
     this.cs.putCustomer(customer, this.updateId).subscribe(() => {
-      this.form.reset();
+      // this.form.reset();
+
       alert('successfully');
+      this.route.navigateByUrl("list-customer");
     })
   }
 }

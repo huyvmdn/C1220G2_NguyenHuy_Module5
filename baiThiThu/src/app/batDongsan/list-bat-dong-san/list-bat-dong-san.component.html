@@ -1,0 +1,55 @@
+<h3>CUSTOMER</h3>
+<button class="btn btn-outline-light text-dark" type="submit" (click)="showList()">show list</button>
+<div class="row">
+  <div class="col-3"><input class="form-control me-2" type="search" placeholder="diện tích" aria-label="Search"
+                            [(ngModel)]="dienTich">
+    <input class="form-control me-2 col-3" type="search" placeholder="codeSearch"  [(ngModel)]="codeSearch" aria-label="Search">
+    <div class="form-field col-lg-6">
+      <label class="label" for="vungMien" style="margin-bottom: 17px;"> Chọn hướng</label>
+      <select id="vungMien" class="input-text js-input" formControlName="vungMien" style="padding-left: 185px;">
+        <option value="" selected >chon huong</option>
+        <option *ngFor="let c of huongs" [ngValue]="c"  [(ngModel)]="huong" >{{c.name}}</option>
+      </select>
+    </div>
+    <input class="form-control me-2" type="search" placeholder="giá" aria-label="Search"
+           [(ngModel)]="gia">
+  </div>
+  <div class="col-6">
+    <button class="btn btn-outline-light text-dark" type="submit" (click)="searchDienTich()">Search</button>
+    <button class="btn btn-outline-light text-dark" type="submit" (click)="searchHuong()">Search hướng</button>
+    <button class="btn btn-outline-light text-dark" type="submit" (click)="searchGia()">Search giá</button>
+    <button class="btn btn-outline-light text-dark" type="submit" (click)="searchFullBatDongSan()">Search full</button>
+  </div>
+</div>
+
+
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th> Id</th>
+    <th> tựa đề</th>
+    <th> danh mục</th>
+    <th> bạn đăng tin</th>
+    <th> đại chỉ</th>
+    <th> diện tích</th>
+    <th> hướng</th>
+    <th> giá</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let c of batDongSans | paginate:{itemsPerPage: 5, currentPage:page }; index as i ">
+    <td>{{i + 1}}</td>
+    <td>{{c.tuaDe}}</td>
+    <td>{{c.danhMuc.name}}</td>
+    <td>{{c.banDangTin}}</td>
+    <td>{{c.diaChi}}</td>
+    <td>{{c.dienTich}}</td>
+    <td>{{c.huong.name}}</td>
+    <td>{{c.gia}}</td>
+  </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="page=$event" nextLabel="sau" previousLabel="trước" ></pagination-controls>
+
+

@@ -12,12 +12,17 @@ export class ListCustomerComponent implements OnInit {
   customerList: Customer[] = [];
   deleteId : number=0;
   deleteCode:string='';
-  customer!: Customer;
+  nameSearch: string='';
+  page=1;
+  public customer!: Customer;
   constructor(private cs: CustomerServiceService) {
-
   }
 
   ngOnInit(): void {
+    this.showList();
+  }
+
+  showList(){
     this.cs.getCustomers().subscribe(data => {
       console.log(data)
       this.customerList = data
@@ -25,18 +30,26 @@ export class ListCustomerComponent implements OnInit {
     })
   }
 
-  send(id: number) {
+  send(id: any) {
+    console.log("id: " + id);
     this.deleteId = id;
-    this.cs.findById(id).subscribe(data =>{
-      this.customer = data;
-      this.deleteCode = this.customer.code;
-    });
+
   }
+
   deleteCustomer(){
     let c = this.cs.deleteById(this.deleteId).subscribe(() => {
-      this.cs.getCustomers();
+      this.showList();
     },e =>{
       console.log(e)
     });
   }
+
+  searchCustomer( ) {
+    console.log(this.nameSearch)
+    this.cs.search(this.nameSearch).subscribe(custumers => {
+      this.customerList= custumers;
+    })
+  }
+
+
 }

@@ -1,4 +1,13 @@
 <h3>CUSTOMER</h3>
+<div class="row">
+  <div class="col-7"><input class="form-control me-2" type="search" placeholder="name" aria-label="Search"
+                            [(ngModel)]="nameSearch">
+    <!--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--></div>
+  <div class="col-5">
+    <button class="btn btn-outline-light text-dark" type="submit" (click)="searchCustomer()">Search</button>
+  </div>
+</div>
+
 
 <table class="table">
   <thead class="thead-dark">
@@ -6,6 +15,7 @@
     <th> Id</th>
     <th> Code</th>
     <th> Name</th>
+    <th> birthday</th>
     <th> gender</th>
     <th> idCard</th>
     <th> phone</th>
@@ -16,11 +26,12 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let c of customerList; index as i">
+  <tr *ngFor="let c of customerList | paginate:{itemsPerPage: 5, currentPage:page }; index as i ">
     <td>{{i + 1}}</td>
     <td>{{c.code}}</td>
     <td>{{c.name}}</td>
-    <div *ngIf="c.gender; then male; else female"></div>
+    <td>{{c.birthday | date:'dd/MM/yyyy'}}</td>
+    <div *ngIf="c.gender == 1; then male; else female"></div>
     <ng-template #male>
       <td>Male</td>
     </ng-template>
@@ -36,15 +47,15 @@
     <td>
       <button [routerLink]="['/update-customer', c.id]" class="btn btn-warning">edit</button>
     </td>
-<!--    <td>-->
-<!--      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" (click)="send(c.id)">-->
-<!--        delete-->
-<!--      </button>-->
-<!--    </td>-->
+    <td>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" (click)="send(c.id)">
+        delete
+      </button>
+    </td>
   </tr>
   </tbody>
 </table>
-
+<pagination-controls (pageChange)="page=$event" nextLabel="sau" previousLabel="trước" ></pagination-controls>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

@@ -20,6 +20,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './component/home/home.component';
 import {UpdateCustomerComponent} from "./customer/update-customer/update-customer.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -40,14 +41,16 @@ import {UpdateCustomerComponent} from "./customer/update-customer/update-custome
     CreateContractDetailComponent,
     UsingCustomerComponent,
     HomeComponent,
-    UpdateCustomerComponent
+    UpdateCustomerComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

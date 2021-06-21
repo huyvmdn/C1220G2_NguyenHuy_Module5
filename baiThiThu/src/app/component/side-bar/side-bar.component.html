@@ -1,0 +1,27 @@
+<div class="nav-side-menu" style="top: 50px;">
+  <div class="brand">Menu</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+  <div class="menu-list">
+
+    <ul id="menu-content" class="menu-content collapse out">
+      <li>
+        <a href="#">
+          Home
+        </a>
+      </li>
+
+      <li data-toggle="collapse" data-target="#batDongSan" class="collapsed active">
+        <a href="#"><i class="fab fa-jenkins"></i> batDongSan <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="batDongSan">
+        <a routerLink="/list-batDongSan">
+          <li class="active"> danh sách bất động sản</li>
+        </a>
+        <a routerLink="/create-batDongSan">
+          <li>thêm mới</li>
+        </a>
+      </ul>
+    </ul>
+  </div>
+</div>

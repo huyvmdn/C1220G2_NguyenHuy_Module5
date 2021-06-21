@@ -1,0 +1,67 @@
+{
+  "types": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    }
+  ],
+  "object": [
+    {
+      "code": "No-2000",
+      "name": "Huy BBBBBBBBBB",
+      "idCard": 123456789,
+      "phone": "0906777888",
+      "type": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "birthday": "1991-12-12",
+      "email": "huyvm.dn@gmail.com",
+      "address": "799 AB",
+      "id": 1
+    },
+    {
+      "code": "KH-1234",
+      "name": "Tai asdas",
+      "idCard": 987654329,
+      "phone": "0906777889",
+      "type": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "birthday": "2021-06-16",
+      "email": "admin@gmail.com",
+      "address": "799 Tran Cao Van",
+      "id": 2
+    },
+    {
+      "code": "KH-2222",
+      "name": "SDFS Sdfsdf",
+      "idCard": 984567898,
+      "phone": "0905888999",
+      "type": {
+        "id": 4,
+        "name": "Silver"
+      },
+      "birthday": "1991-12-12",
+      "email": "huyvm.dn@gmail.com",
+      "address": "dfsgsd sdfg",
+      "id": 3
+    },
+    {
+      "code": "KH-2000",
+      "name": "Tai ha noi",
+
+      "idCard": 123456788,
+      "phone": "0906777888",
+      "type": {
+        "id": 5,
+        "name": "Member"
+      }
+    }
+  ]
+}

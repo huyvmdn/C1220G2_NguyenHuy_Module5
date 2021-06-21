@@ -23,7 +23,6 @@ const routes: Routes = [
   {path: 'create-contract', component: CreateContractComponent},
   {path: 'create-contract-detail', component: CreateContractDetailComponent},
   {path: 'update-customer/:id', component: UpdateCustomerComponent},
-
 ];
 
 @NgModule({

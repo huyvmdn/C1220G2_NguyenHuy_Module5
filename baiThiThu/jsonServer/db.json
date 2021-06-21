@@ -1,0 +1,187 @@
+{
+  "danhMuc": [
+    {
+      "id": 1,
+      "name": "nhà đất"
+    },
+    {
+      "id": 2,
+      "name": "phone"
+    }
+  ],
+  "vungMien": [
+    {
+      "id": 1,
+      "name": "Đà Nẵng"
+    },
+    {
+      "id": 2,
+      "name": "Hà Nội"
+    },
+    {
+      "id": 3,
+      "name": "Hồ Chí Minh"
+    }
+  ],
+  "huong": [
+    {
+      "id": 1,
+      "name": "Đông"
+    },
+    {
+      "id": 2,
+      "name": "Tây"
+    },
+    {
+      "id": 3,
+      "name": "Nam"
+    },
+    {
+      "id": 4,
+      "name": "Bắc"
+    }
+  ],
+  "batDongSan": [
+    {
+      "danhMuc": "",
+      "vungMien": {
+        "id": 1,
+        "name": "Đà Nẵng"
+      },
+      "banLa": "cá nhân",
+      "banDangTin": "cần Mua",
+      "tinhTrang": "đã sử dụng",
+      "diaChi": "dfghdfhdfgh",
+      "dienTich": 45563465,
+      "huong": {
+        "id": 2,
+        "name": "Tây"
+      },
+      "tuaDe": "34563465",
+      "noiDung": "34653465",
+      "gia": 3465346534653465,
+      "id": 1
+    },
+    {
+      "danhMuc": "",
+      "vungMien": "",
+      "banLa": "",
+      "banDangTin": "",
+      "tinhTrang": "",
+      "diaChi": "",
+      "dienTich": "",
+      "huong": "",
+      "tuaDe": "",
+      "noiDung": "",
+      "gia": "",
+      "id": 2
+    },
+    {
+      "danhMuc": {
+        "id": 1,
+        "name": "nhà đất"
+      },
+      "vungMien": {
+        "id": 1,
+        "name": "Đà Nẵng"
+      },
+      "banLa": "cá nhân",
+      "banDangTin": "cần Mua",
+      "tinhTrang": "đã sử dụng",
+      "diaChi": "43534523",
+      "dienTich": 452352345,
+      "huong": {
+        "id": 2,
+        "name": "Tây"
+      },
+      "tuaDe": "2352345",
+      "noiDung": "2345235",
+      "gia": 23452352352345236,
+      "id": 3
+    },
+    {
+      "danhMuc": {
+        "id": 1,
+        "name": "nhà đất"
+      },
+      "vungMien": {
+        "id": 2,
+        "name": "Hà Nội"
+      },
+      "banLa": "cá nhân",
+      "banDangTin": "cần Mua",
+      "tinhTrang": "mới",
+      "diaChi": "dfghdfhdfgh",
+      "dienTich": 535,
+      "huong": {
+        "id": 3,
+        "name": "Nam"
+      },
+      "tuaDe": "khong cogshf",
+      "noiDung": "dfghdfghdfg",
+      "gia": 56455643653465340,
+      "id": 4
+    },
+    {
+      "danhMuc": {
+        "id": 1,
+        "name": "nhà đất"
+      },
+      "vungMien": {
+        "id": 1,
+        "name": "Đà Nẵng"
+      },
+      "banLa": "cá nhân",
+      "banDangTin": "cần bán",
+      "tinhTrang": "mới",
+      "diaChi": "356356",
+      "dienTich": 34634634,
+      "huong": {
+        "id": 1,
+        "name": "Đông"
+      },
+      "tuaDe": "34653465",
+      "noiDung": "34653465",
+      "gia": 34634653463465,
+      "id": 5
+    }
+  ],
+  "product": [
+    {
+      "code": "SP-2000",
+      "name": "Huy BBBBBBBBBB",
+      "stock": 50,
+      "price": 800,
+      "detail": "khong biet",
+      "productType": {
+        "id": 3,
+        "name": "fs"
+      },
+      "id": 1
+    },
+    {
+      "code": "SP-0002",
+      "name": "Huy BBBBBBBBBB",
+      "stock": 345,
+      "price": 900,
+      "detail": "567fgfgh g",
+      "productType": {
+        "id": 2,
+        "name": "phone"
+      },
+      "id": 2
+    },
+    {
+      "code": "SP-0012",
+      "name": "sfgasdgs",
+      "stock": 20,
+      "price": 3000,
+      "detail": "sdfgsdfg",
+      "productType": {
+        "id": 2,
+        "name": "phone"
+      },
+      "id": 3
+    }
+  ]
+}

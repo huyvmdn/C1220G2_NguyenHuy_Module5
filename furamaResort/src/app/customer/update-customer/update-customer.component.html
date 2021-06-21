@@ -22,12 +22,12 @@
 
     </div>
     <div class="form-field col-lg-6 ">
-      <label for="female" style="margin-left: 100px"> Female</label> <input style="margin-left: 20px" value="false"
+      <label for="female" style="margin-left: 100px"> Female</label> <input style="margin-left: 20px" value="0"
                                                                             formControlName="gender" name="gender"
-                                                                            type="radio" id="female">
-      <label for="male" style="margin-left: 20px"> Male</label> <input style="margin-left: 20px" value="true"
+                                                                            type="radio" id="female"  [(ngModel)]="radioSelected">
+      <label for="male" style="margin-left: 20px"> Male</label> <input style="margin-left: 20px" value="1"
                                                                        formControlName="gender" name="gender"
-                                                                       type="radio" id="male">
+                                                                       type="radio" id="male" [(ngModel)]="radioSelected">
       <label class="label">gender</label>
       <p class="col alert alert-danger"
          *ngIf="!form.controls.gender.valid && form.controls.gender.touched ">
@@ -59,8 +59,8 @@
       <label class="label" for="customerType" style="margin-bottom: 17px;"> customerType</label>
       <select id="customerType" class="input-text js-input" formControlName="customerType" style="padding-left: 185px;">
         <ng-container *ngFor="let c of listType">
-          <option [selected]="c.id" [ngValue]="c"
-                  [value]="c.name">{{c.name}}</option>
+          <option [value]="c" *ngIf="customer.customerType.id==c.id" selected >{{c.name}}</option>
+          <option [ngValue]="c"  *ngIf="customer.customerType.id!=c.id" >{{c.name}}</option>
         </ng-container>
 
       </select>

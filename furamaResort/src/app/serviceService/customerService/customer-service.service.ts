@@ -11,7 +11,7 @@ const API_URL = `${environment.apiUrl}`;
   providedIn: 'root'
 })
 export class CustomerServiceService {
-  private _API_URL_CUSTOMERTYPE = 'http://localhost:8080/customerType';
+  private _API_URL_CUSTOMERTYPE = 'http://localhost:3000/customerTypes';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export class CustomerServiceService {
   }
 
   public postCustomer(customer: Customer): Observable<Customer> {
-    return this.httpClient.post<Customer>(API_URL + '/customer/save', customer, this.httpOptions);
+    return this.httpClient.post<Customer>(API_URL + '/customer', customer, this.httpOptions);
   }
 
   public findById(id: number): Observable<Customer> {
@@ -39,12 +39,15 @@ export class CustomerServiceService {
   }
 
   public putCustomer(customer: Customer, id: number): Observable<Customer> {
-    return this.httpClient.put<Customer>(`${API_URL}/customer/update/${id}`, customer)
+    return this.httpClient.put<Customer>(`${API_URL}/customer/${id}`, customer)
   }
 
   deleteById(id: number): Observable<Customer> {
-    return this.httpClient.delete<Customer>(`${API_URL}/customer/delete/${id}`);
+    return this.httpClient.delete<Customer>(`${API_URL}/customer/${id}`);
   }
 
 
+  search(nameSearch: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(API_URL + '/customer?name_like='+ nameSearch)
+  }
 }

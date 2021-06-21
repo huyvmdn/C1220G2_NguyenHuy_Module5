@@ -1,0 +1,123 @@
+<section class="get-in-touch">
+  <h1 class="title">Create Product</h1>
+  <form class="contact-form row" [formGroup]="createForm" (ngSubmit)="save_update()" *ngIf="createForm">
+    <div class="form-field col-lg-6">
+      <label class="label" for="danhmuc" style="margin-bottom: 17px;"> danh muc</label>
+      <select id="danhmuc" class="input-text js-input" formControlName="danhMuc" style="padding-left: 185px;">
+        <option value="" selected disabled>chon danhmuc</option>
+        <option *ngFor="let c of danhmuc" [ngValue]="c">{{c.name}}</option>
+      </select>
+
+    </div>
+    <div class="form-field col-lg-6">
+      <label class="label" for="vungMien" style="margin-bottom: 17px;"> vung Mien</label>
+      <select id="vungMien" class="input-text js-input" formControlName="vungMien" style="padding-left: 185px;">
+        <option value="" selected disabled>chon danhmuc</option>
+        <option *ngFor="let c of vungMien" [ngValue]="c">{{c.name}}</option>
+      </select>
+    </div>
+    <div class="form-field col-lg- ">
+      <label for="caNhan" style="margin-left: 100px"> cá nhân</label> <input style="margin-left: 20px" value="cá nhân"
+                                                                             formControlName="banLa" name="banLa"
+                                                                             type="radio" id="caNhan">
+      <label for="congTy" style="margin-left: 20px"> công ty</label> <input style="margin-left: 20px" value="công ty"
+                                                                            formControlName="banLa" name="banLa"
+                                                                            type="radio" id="congTy">
+      <label class="label">Ban la</label>
+      <p class="col alert alert-danger"
+         *ngIf="!createForm.controls.banLa.valid && createForm.controls.banLa.touched ">
+        Can not be empty!</p>
+    </div>
+    <div class="form-field col-lg-12 ">
+      <label for="canBan" style="margin-left: 100px"> cần bán</label> <input style="margin-left: 20px" value="cần bán"
+                                                                             formControlName="banDangTin"
+                                                                             name="banDangTin"
+                                                                             type="radio" id="canBan">
+      <label for="canMua" style="margin-left: 20px"> cần Mua</label> <input style="margin-left: 20px" value="cần Mua"
+                                                                            formControlName="banDangTin"
+                                                                            name="banDangTin"
+                                                                            type="radio" id="canMua">
+      <label for="choThue" style="margin-left: 20px"> cho thuê</label> <input style="margin-left: 20px" value="cho thuê"
+                                                                             formControlName="banDangTin"
+                                                                             name="banDangTin"
+                                                                             type="radio" id="choThue">
+      <label for="canThue" style="margin-left: 20px"> cần thuê</label> <input style="margin-left: 20px" value="cần thuê"
+                                                                             formControlName="banDangTin"
+                                                                             name="banDangTin"
+                                                                             type="radio" id="canThue">
+      <label class="label">ban Dang Tin</label>
+      <p class="col alert alert-danger"
+         *ngIf="!createForm.controls.banDangTin.valid && createForm.controls.banDangTin.touched ">
+        Can not be empty!</p>
+    </div>
+    <div class="form-field col-lg-12 ">
+      <label for="moi" style="margin-left: 100px"> mới</label> <input style="margin-left: 20px" value="mới"
+                                                                      formControlName="tinhTrang" name="tinhTrang"
+                                                                      type="radio" id="moi">
+      <label for="daSuDung" style="margin-left: 20px"> đã sử dụng</label> <input style="margin-left: 20px" value="đã sử dụng"
+                                                                                 formControlName="tinhTrang"
+                                                                                 name="tinhTrang"
+                                                                                 type="radio" id="daSuDung">
+      <label class="label">tinh Trang</label>
+      <p class="col alert alert-danger"
+         *ngIf="!createForm.controls.tinhTrang.valid && createForm.controls.tinhTrang.touched ">
+        Can not be empty!</p>
+    </div>
+    <div class="form-field col-lg-12">
+      <input id="diaChi" class="input-text js-input" type="text" formControlName="diaChi" required>
+      <label class="label" for="diaChi">dia Chi</label>
+      <p class="col alert alert-danger" role="alert"
+         *ngIf="createForm.controls.diaChi.hasError('required') && createForm.controls.diaChi.touched">
+        Can not be empty!
+      </p>
+    </div>
+    <div class="form-field col-lg-12">
+      <input id="dienTich" class="input-text js-input" type="number" formControlName="dienTich" required>
+      <label class="label" for="dienTich">dien Tich</label>
+      <p class="col alert alert-danger" role="alert"
+         *ngIf="createForm.controls.dienTich.hasError('required') && createForm.controls.dienTich.touched">
+        Can not be empty!
+      </p>
+      <p class="col alert alert-danger"
+         *ngIf="!createForm.controls.dienTich.valid && createForm.controls.dienTich.touched ">
+      lớn hơn 20m2</p>
+    </div>
+    <div class="form-field col-lg-12">
+      <label class="label" for="huong" style="margin-bottom: 17px;"> vung Mien</label>
+      <select id="huong" class="input-text js-input" formControlName="huong" style="padding-left: 185px;">
+        <option value="" selected disabled>chon huong</option>
+        <option *ngFor="let c of huong" [ngValue]="c">{{c.name}}</option>
+      </select>
+    </div>
+    <div class="form-field col-lg-12">
+      <input id="tuaDe" class="input-text js-input" type="text" formControlName="tuaDe" required>
+      <label class="label" for="tuaDe">tua De</label>
+      <p class="col alert alert-danger" role="alert"
+         *ngIf="createForm.controls.tuaDe.hasError('required') && createForm.controls.tuaDe.touched">
+        Can not be empty!
+      </p>
+    </div>
+    <div class="form-field col-lg-12">
+      <input id="noiDung" class="input-text js-input" type="text" formControlName="noiDung" required>
+      <label class="label" for="tuaDe">noiDung</label>
+      <p class="col alert alert-danger" role="alert"
+         *ngIf="createForm.controls.noiDung.hasError('required') && createForm.controls.noiDung.touched">
+        Can not be empty!
+      </p>
+    </div>
+    <div class="form-field col-lg-12">
+      <input id="gia" class="input-text js-input" type="number" formControlName="gia" required>
+      <label class="label" for="gia">gia</label>
+      <p class="col alert alert-danger" role="alert"
+         *ngIf="createForm.controls.gia.hasError('required') && createForm.controls.gia.touched">
+        Can not be empty!
+      </p>
+      <p class="col alert alert-danger"
+         *ngIf="!createForm.controls.gia.valid && createForm.controls.gia.touched ">
+        lớn hơn 1000000</p>
+    </div>
+    <div class="form-field col-lg-12">
+      <input type="submit" class="submit-btn" *ngIf="createForm.valid" [disabled]="!createForm.valid" value="Submit">
+    </div>
+  </form>
+</section>
